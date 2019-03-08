@@ -1,0 +1,24 @@
+{
+  "name": "2048.node",
+  "version": "0.0.1",
+  "description": "🎮 Terminal version of the game \"2048\"",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bestvist/2048.node.git"
+  },
+  "keywords": [
+    "2048",
+    "game",
+    "node",
+    "terminal"
+  ],
+  "author": "bestvist",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bestvist/2048.node/issues"
+  },
+  "homepage": "https://github.com/bestvist/2048.node#readme"
+}
