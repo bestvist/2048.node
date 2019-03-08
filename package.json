@@ -4,6 +4,7 @@
   "description": "🎮 Terminal version of the game \"2048\"",
   "main": "index.js",
   "scripts": {
+    "start": "node ./src/index"
   },
   "repository": {
     "type": "git",
