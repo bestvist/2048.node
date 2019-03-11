@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/bestvist/2048.node/issues"
   },
-  "homepage": "https://github.com/bestvist/2048.node#readme"
+  "homepage": "https://github.com/bestvist/2048.node#readme",
+  "dependencies": {
+    "cli-table": "^0.3.1"
+  }
 }
