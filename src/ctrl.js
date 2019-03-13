@@ -11,6 +11,7 @@ class ctrl {
         this.score = 0;
         this.generateRandom();
         this.generateRandom();
+        this.drawLogo();
         this.drawBoard();
         this.drawGrid();
     }
@@ -90,6 +91,16 @@ class ctrl {
 
     }
 
+    drawLogo(){
+        const f2048 = `                                            
+___ ___ ___ ___    _____ _____ ____  _____ 
+|_  |   | | | . |  |   | |     |    \|   __|
+|  _| | |_  | . |  | | | |  |  |  |  |   __|
+|___|___| |_|___|  |_|___|_____|____/|_____|
+                                        `                                                                                                                              
+        console.log(f2048)
+    }
+
     drawBoard(){
         const board = [
             ['Score', this.score]
@@ -138,6 +149,7 @@ class ctrl {
 
     action() {
         this.generateRandom();
+        this.drawLogo();
         this.drawBoard();
         this.drawGrid();
     }

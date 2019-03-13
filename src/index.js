@@ -1,13 +1,3 @@
-
-const f2048 = `                                            
-___ ___ ___ ___    _____ _____ ____  _____ 
-|_  |   | | | . |  |   | |     |    \|   __|
-|  _| | |_  | . |  | | | |  |  |  |  |   __|
-|___|___| |_|___|  |_|___|_____|____/|_____|
-                                           `                                                                                             
-                                       
-                                    
-// console.log(f2048)
 const readline = require('readline');
 const ctrl = require('./ctrl')
 const ctrlIn = new ctrl();
