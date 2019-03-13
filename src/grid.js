@@ -11,7 +11,7 @@ class Grid {
         for (var x = 0; x < this.size; x++) {
             var row = cells[x] = [];
             for (var y = 0; y < this.size; y++) {
-                row.push('');
+                row.push("");
             }
         }
         return cells;

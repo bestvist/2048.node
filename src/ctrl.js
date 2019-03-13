@@ -34,28 +34,49 @@ class ctrl {
     }
 
     rangeTilesUp() {
-        // this.generateRandom();
-        // this.drawGrid();
         const cells = this.grid.cells;
-        for (let x = 0; x < this.grid.size; x++) {
-            for (let y = 0; y < this.grid.size; y++) {
-                let cell = cells[x][y];
-
-
+        let cellCol = [];
+        for (let y = 0; y < this.grid.size; y++) {
+            for (let x = 0; x < this.grid.size; x++) {
+                cellCol.push(cells[x][y]);
+            }
+            cellCol = this.rangeRowValue(cellCol);
+            for (let x = 0; x < this.grid.size; x++) {
+                cells[x][y] = cellCol[x];
             }
         }
+
+        this.action();
     }
     rangeTilesDown() {
-        this.generateRandom();
-        this.drawGrid();
+        const cells = this.grid.cells;
+        let cellCol = [];
+        for (let y = 0; y < this.grid.size; y++) {
+            for (let x = 0; x < this.grid.size; x++) {
+                cellCol.push(cells[x][y]);
+            }
+            cellCol = this.rangeRowValue(cellCol.reverse()).reverse();
+            for (let x = 0; x < this.grid.size; x++) {
+                cells[x][y] = cellCol[x];
+            }
+        }
+        this.action();
     }
     rangeTilesLeft() {
-        this.generateRandom();
-        this.drawGrid();
+        const cells = this.grid.cells,
+            size = this.grid.size;
+        for (let x = 0; x < size; x++) {
+            cells[x] = this.rangeRowValue(cells[x]);
+        }
+        this.action();
     }
     rangeTilesRight() {
-        this.generateRandom();
-        this.drawGrid();
+        const cells = this.grid.cells,
+            size = this.grid.size;
+        for (let x = 0; x < size; x++) {
+            cells[x] = this.rangeRowValue(cells[x].reverse()).reverse();
+        }
+        this.action();
     }
 
     isWin() {
@@ -75,32 +96,30 @@ class ctrl {
         return Math.random() < 0.9 ? 2 : 4;
     }
 
-    rangeRowValue(arr=[]) {
-        // 遍历数组从数组的的当前位置的下一个开始遍历，找不是0的位置()
-        // 如果没找到什么也不做
-        // 如果找到
-        // 如果当前位置是0，那么像当前位置与下一个进行互换（当前位置获得下一个位置的数据，并且将下一个位置数据置为0，将下标减一）
-        // 如果当前位置和下一个位置相等，将当前位置数据*2，下个位置数据置0
+    rangeRowValue(arr = []) {
         let next;
         for (let i = 0; i < arr.length; i++) {
-            // 先找next
-            next = arr.findIndex((c,m)=>{
-				return m >i && c!==0;
-			})
+            next = arr.findIndex((c, m) => {
+                return m > i && c !== "";
+            })
 
             if (next !== -1) {
-                // 存在下个不为0的位置
-                if (arr[i] === 0) {
+                if (arr[i] === "") {
                     arr[i] = arr[next];
-                    arr[next] = 0;
+                    arr[next] = "";
                     i -= 1;
                 } else if (arr[i] === arr[next]) {
                     arr[i] = arr[i] * 2;
-                    arr[next] = 0;
+                    arr[next] = "";
                 }
             }
         }
         return arr;
+    }
+
+    action() {
+        this.generateRandom();
+        this.drawGrid();
     }
 
 }
