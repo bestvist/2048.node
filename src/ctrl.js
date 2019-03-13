@@ -1,12 +1,17 @@
+const Table = require('cli-table')
 const Grid = require('./grid');
 
 class ctrl {
-    constructor() {}
+    constructor() {
+        this.score = 0;
+    }
 
     start() {
         this.grid = new Grid();
+        this.score = 0;
         this.generateRandom();
         this.generateRandom();
+        this.drawBoard();
         this.drawGrid();
     }
 
@@ -35,13 +40,14 @@ class ctrl {
 
     rangeTilesUp() {
         const cells = this.grid.cells;
-        let cellCol = [];
-        for (let y = 0; y < this.grid.size; y++) {
-            for (let x = 0; x < this.grid.size; x++) {
+        const size = this.grid.size;
+        for (let y = 0; y < size; y++) {
+            let cellCol = [];
+            for (let x = 0; x < size; x++) {
                 cellCol.push(cells[x][y]);
             }
             cellCol = this.rangeRowValue(cellCol);
-            for (let x = 0; x < this.grid.size; x++) {
+            for (let x = 0; x < size; x++) {
                 cells[x][y] = cellCol[x];
             }
         }
@@ -50,13 +56,14 @@ class ctrl {
     }
     rangeTilesDown() {
         const cells = this.grid.cells;
-        let cellCol = [];
-        for (let y = 0; y < this.grid.size; y++) {
-            for (let x = 0; x < this.grid.size; x++) {
+        const size = this.grid.size;
+        for (let y = 0; y < size; y++) {
+            let cellCol = [];
+            for (let x = 0; x < size; x++) {
                 cellCol.push(cells[x][y]);
             }
             cellCol = this.rangeRowValue(cellCol.reverse()).reverse();
-            for (let x = 0; x < this.grid.size; x++) {
+            for (let x = 0; x < size; x++) {
                 cells[x][y] = cellCol[x];
             }
         }
@@ -83,6 +90,18 @@ class ctrl {
 
     }
 
+    drawBoard(){
+        const board = [
+            ['Score', this.score]
+        ]
+        const table = new Table({
+            chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
+            colWidths: [30, 10]
+        });
+        table.push(...board);
+        console.log(table.toString()+ '\n');
+    }
+
     generateRandom() {
         let cells = this.grid.availableCell();
         if (cells.length) {
@@ -102,7 +121,6 @@ class ctrl {
             next = arr.findIndex((c, m) => {
                 return m > i && c !== "";
             })
-
             if (next !== -1) {
                 if (arr[i] === "") {
                     arr[i] = arr[next];
@@ -110,6 +128,7 @@ class ctrl {
                     i -= 1;
                 } else if (arr[i] === arr[next]) {
                     arr[i] = arr[i] * 2;
+                    this.score += arr[i];
                     arr[next] = "";
                 }
             }
@@ -119,6 +138,7 @@ class ctrl {
 
     action() {
         this.generateRandom();
+        this.drawBoard();
         this.drawGrid();
     }
 
