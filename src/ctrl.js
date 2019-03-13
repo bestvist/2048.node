@@ -4,16 +4,14 @@ const Grid = require('./grid');
 class ctrl {
     constructor() {
         this.score = 0;
+        this.hasChange = false;
     }
 
     start() {
         this.grid = new Grid();
-        this.score = 0;
         this.generateRandom();
         this.generateRandom();
-        this.drawLogo();
-        this.drawBoard();
-        this.drawGrid();
+        this.action();
     }
 
     drawGrid() {
@@ -107,7 +105,7 @@ ___ ___ ___ ___    _____ _____ ____  _____
         ]
         const table = new Table({
             chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
-            colWidths: [30, 10]
+            colWidths: [21, 21]
         });
         table.push(...board);
         console.log(table.toString()+ '\n');
@@ -137,10 +135,12 @@ ___ ___ ___ ___    _____ _____ ____  _____
                     arr[i] = arr[next];
                     arr[next] = "";
                     i -= 1;
+                    this.hasChange = true;
                 } else if (arr[i] === arr[next]) {
                     arr[i] = arr[i] * 2;
-                    this.score += arr[i];
                     arr[next] = "";
+                    this.score += arr[i];
+                    this.hasChange = true;
                 }
             }
         }
@@ -148,7 +148,11 @@ ___ ___ ___ ___    _____ _____ ____  _____
     }
 
     action() {
-        this.generateRandom();
+        if (this.hasChange) {
+            this.generateRandom();
+            this.hasChange = false;
+        } 
+            
         this.drawLogo();
         this.drawBoard();
         this.drawGrid();
