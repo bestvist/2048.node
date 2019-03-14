@@ -1,6 +1,6 @@
 {
-  "name": "2048node",
-  "version": "1.0.3",
+  "name": "2048.node",
+  "version": "1.0.4",
   "description": "🎮 Terminal version of the game 2048",
   "bin": {
     "2048node": "src/index.js"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bestvist/2048node.git"
+    "url": "git+https://github.com/bestvist/2048.node.git"
   },
   "keywords": [
     "2048",
@@ -22,9 +22,9 @@
   "author": "bestvist",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bestvist/2048node/issues"
+    "url": "https://github.com/bestvist/2048.node/issues"
   },
-  "homepage": "https://github.com/bestvist/2048node#readme",
+  "homepage": "https://github.com/bestvist/2048.node#readme",
   "dependencies": {
     "chalk": "^2.4.2",
     "cli-table": "^0.3.1"

@@ -14,7 +14,7 @@
 # 安装 Install 
 
 `
-npm install -g 2048node
+npm install -g 2048.node
 `
 
 # 开始 Start
