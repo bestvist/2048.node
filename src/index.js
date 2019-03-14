@@ -1,6 +1,8 @@
+#!/usr/bin/env node
+
 const readline = require('readline');
-const ctrl = require('./ctrl')
-const ctrlIn = new ctrl();
+const Game = require('./game')
+const game = new Game();
 
 const keyMap = {
     'w': 'up',
@@ -18,11 +20,11 @@ rl.prompt();
 
 rl.input.on('keypress', (key) => {
     process.stdout.write('\u001B[2J\u001B[0;0f');
-    ctrlIn.move(keyMap[key]);
+    game.move(keyMap[key]);
 })
 
 rl.on('close', () => {
-    ctrlIn.gameover();
+    game.gameover();
 })
 
-ctrlIn.start();
+game.start();

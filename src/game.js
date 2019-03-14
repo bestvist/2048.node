@@ -2,7 +2,7 @@ const Table = require('cli-table');
 const chalk = require('chalk');
 const Grid = require('./grid');
 
-class ctrl {
+class Game {
     constructor() {
         this.score = 0;
         this.hasChange = false;
@@ -187,4 +187,4 @@ ___ ___ ___ ___    _____ _____ ____  _____
 
 }
 
-module.exports = ctrl;
+module.exports = Game;
