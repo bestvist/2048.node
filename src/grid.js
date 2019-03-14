@@ -1,4 +1,5 @@
 const Table = require('cli-table')
+const chalk = require('chalk');
 
 class Grid {
     constructor() {
@@ -18,6 +19,13 @@ class Grid {
     }
 
     drawCells() {
+        const cells = JSON.parse(JSON.stringify(this.cells));
+        const size = this.size;
+        for (let x = 0; x < size; x++) {
+            for (let y = 0; y < size; y++) {
+                cells[x][y] = this.colorCell(cells[x][y]);
+            }
+        }
         const table = new Table({
             chars: {
                 'top': '═',
@@ -38,8 +46,26 @@ class Grid {
             },
             colWidths: [10, 10, 10, 10]
         });
-        table.push(...this.cells);
+        table.push(...cells);
         console.log(table.toString());
+    }
+
+    colorCell(value) {
+        if (!value) return value;
+        const colorMap = {
+            '2': 'blueBright',
+            '4': 'blue',
+            '8': 'greenBright',
+            '16': 'green',
+            '32': 'redBright',
+            '64': 'red',
+            '128': 'magentaBright',
+            '256': 'magenta',
+            '512': 'cyanBright',
+            '1028': 'cyan',
+            '2048': 'yellow',
+        }
+        return chalk[colorMap[value]](value);
     }
 
     setCellValue(x, y, value) {

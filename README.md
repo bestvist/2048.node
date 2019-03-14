@@ -13,6 +13,7 @@
 
 # TODO
 
-- [ ] Play game
+- [x] Play game
+- [ ] Number color
 - [ ] Save score
 - [ ] Game rank

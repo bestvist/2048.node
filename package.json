@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/bestvist/2048.node#readme",
   "dependencies": {
+    "chalk": "^2.4.2",
     "cli-table": "^0.3.1"
   }
 }

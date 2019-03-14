@@ -1,4 +1,5 @@
-const Table = require('cli-table')
+const Table = require('cli-table');
+const chalk = require('chalk');
 const Grid = require('./grid');
 
 class ctrl {
@@ -89,33 +90,38 @@ class ctrl {
 
     }
 
-    drawLogo(){
+    drawLogo() {
         const f2048 = `                                            
 ___ ___ ___ ___    _____ _____ ____  _____ 
 |_  |   | | | . |  |   | |     |    \|   __|
 |  _| | |_  | . |  | | | |  |  |  |  |   __|
 |___|___| |_|___|  |_|___|_____|____/|_____|
-                                        `                                                                                                                              
-        console.log(f2048)
+                                        `
+        console.log(chalk.cyan(f2048))
     }
 
-    drawBoard(){
+    drawBoard() {
         const board = [
             ['Score', this.score]
         ]
         const table = new Table({
-            chars: {'mid': '', 'left-mid': '', 'mid-mid': '', 'right-mid': ''},
+            chars: {
+                'mid': '',
+                'left-mid': '',
+                'mid-mid': '',
+                'right-mid': ''
+            },
             colWidths: [21, 21]
         });
         table.push(...board);
-        console.log(table.toString()+ '\n');
+        console.log(table.toString() + '\n');
     }
 
     generateRandom() {
         let cells = this.grid.availableCell();
         if (cells.length) {
             let randomCell = cells[Math.floor(Math.random() * cells.length)];
-            let value = this.randomValue();
+            let value =this.randomValue();
             this.grid.setCellValue(randomCell.x, randomCell.y, value);
         }
     }
@@ -151,8 +157,8 @@ ___ ___ ___ ___    _____ _____ ____  _____
         if (this.hasChange) {
             this.generateRandom();
             this.hasChange = false;
-        } 
-            
+        }
+
         this.drawLogo();
         this.drawBoard();
         this.drawGrid();
