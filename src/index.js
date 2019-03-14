@@ -23,7 +23,6 @@ rl.input.on('keypress', (key) => {
 
 rl.on('close', () => {
     ctrlIn.gameover();
-    process.exit(0);
 })
 
 ctrlIn.start();

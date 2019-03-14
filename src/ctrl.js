@@ -146,7 +146,7 @@ ___ ___ ___ ___    _____ _____ ____  _____
                 } else if (arr[i] === arr[next]) {
                     arr[i] = arr[i] * 2;
                     arr[next] = "";
-                    this.score += arr[i];
+                    this.setScore(arr[i]);
                     this.hasChange = true;
                 }
             }
@@ -166,13 +166,23 @@ ___ ___ ___ ___    _____ _____ ____  _____
         this.drawTip();
     }
 
-    isWin() {
+    setScore(score) {
+        this.score += score;
+        if (score === 2048) {
+            this.won();
+            this.gameover();
+        }
+    }
 
+    won() {
+        const str = `CONGRATULATION! YOU WIN!\n`;
+        console.log(chalk.yellow(str));
     }
 
     gameover() {
         const str = `Have a good time ^.^\n`;
         console.log(chalk.cyan(str));
+        process.exit(0);
     }
 
 }
