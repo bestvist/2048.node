@@ -1,7 +1,7 @@
-# 2048node
+# 2048.node
 
-![npm version](https://img.shields.io/npm/v/2048node.svg)
-![npm downloads](https://img.shields.io/npm/dt/2048node.svg)
+![npm version](https://img.shields.io/npm/v/2048.node.svg)
+![npm downloads](https://img.shields.io/npm/dt/2048.node.svg)
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 
