@@ -86,10 +86,6 @@ class ctrl {
         this.action();
     }
 
-    isWin() {
-
-    }
-
     drawLogo() {
         const f2048 = `                                            
 ___ ___ ___ ___    _____ _____ ____  _____ 
@@ -117,11 +113,16 @@ ___ ___ ___ ___    _____ _____ ____  _____
         console.log(table.toString() + '\n');
     }
 
+    drawTip() {
+        const tip = `W => ↑\nA => ←\nS => ↓\nD => →\nPlease enter key move\n`;
+        console.log(tip)
+    }
+
     generateRandom() {
         let cells = this.grid.availableCell();
         if (cells.length) {
             let randomCell = cells[Math.floor(Math.random() * cells.length)];
-            let value =this.randomValue();
+            let value = this.randomValue();
             this.grid.setCellValue(randomCell.x, randomCell.y, value);
         }
     }
@@ -162,6 +163,16 @@ ___ ___ ___ ___    _____ _____ ____  _____
         this.drawLogo();
         this.drawBoard();
         this.drawGrid();
+        this.drawTip();
+    }
+
+    isWin() {
+
+    }
+
+    gameover() {
+        const str = `Have a good time ^.^\n`;
+        console.log(chalk.cyan(str));
     }
 
 }

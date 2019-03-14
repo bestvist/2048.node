@@ -11,8 +11,7 @@ const keyMap = {
 
 const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout,
-    prompt: 'Please enter key move\n'
+    output: process.stdout
 })
 
 rl.prompt();
@@ -23,7 +22,7 @@ rl.input.on('keypress', (key) => {
 })
 
 rl.on('close', () => {
-    console.log('Have a good time ^.^\n');
+    ctrlIn.gameover();
     process.exit(0);
 })
 
