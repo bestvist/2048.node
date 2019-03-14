@@ -13,16 +13,15 @@
 
 # Install 
 
-`
+```
 npm install -g 2048.node
-`
+```
 
 # Start
 
-`
+```
 2048node
-`
-
+```
 
 # TODO
 
