@@ -4,6 +4,7 @@ const chalk = require('chalk');
 class Grid {
     constructor() {
         this.size = 4;
+        this.cellWidth = 10;
         this.cells = this.initGrid();
     }
 
@@ -23,7 +24,7 @@ class Grid {
         const size = this.size;
         for (let x = 0; x < size; x++) {
             for (let y = 0; y < size; y++) {
-                cells[x][y] = this.colorCell(cells[x][y]);
+                cells[x][y] = this.trimCell(cells[x][y]) + this.colorCell(cells[x][y]);
             }
         }
         const table = new Table({
@@ -44,7 +45,7 @@ class Grid {
                 'right-mid': '╢',
                 'middle': '│'
             },
-            colWidths: [10, 10, 10, 10]
+            colWidths: [this.cellWidth, this.cellWidth, this.cellWidth, this.cellWidth]
         });
         table.push(...cells);
         console.log(table.toString());
@@ -66,6 +67,11 @@ class Grid {
             '2048': 'yellow',
         }
         return chalk[colorMap[value]](value);
+    }
+
+    trimCell(value) {
+        const length = (this.cellWidth - 4) / 2 + 4 - (value + '').length;
+        return new Array(length + 1).join(' ');
     }
 
     setCellValue(x, y, value) {

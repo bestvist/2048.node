@@ -26,4 +26,3 @@ rl.on('close', () => {
 })
 
 ctrlIn.start();
-
