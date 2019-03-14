@@ -1,6 +1,6 @@
 {
   "name": "2048.node",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "🎮 Terminal version of the game 2048",
   "bin": {
     "2048node": "src/index.js"

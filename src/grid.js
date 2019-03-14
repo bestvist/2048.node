@@ -54,19 +54,19 @@ class Grid {
     colorCell(value) {
         if (!value) return value;
         const colorMap = {
-            '2': 'blueBright',
-            '4': 'blue',
-            '8': 'greenBright',
-            '16': 'green',
-            '32': 'redBright',
-            '64': 'red',
-            '128': 'magentaBright',
-            '256': 'magenta',
-            '512': 'cyanBright',
-            '1028': 'cyan',
-            '2048': 'yellow',
+            '2': '#03a9f4',
+            '4': '#4caf50',
+            '8': '#009688',
+            '16': '#ffc107',
+            '32': '#ff5722',
+            '64': '#f44336',
+            '128': '#e91e63',
+            '256': '#9c27b0',
+            '512': '#3f51b5',
+            '1028': '#fbd324',
+            '2048': '#00bcd4',
         }
-        return chalk[colorMap[value]](value);
+        return chalk.hex([colorMap[value]])(value);
     }
 
     trimCell(value) {

@@ -87,7 +87,7 @@ class Game {
     }
 
     drawLogo() {
-        const f2048 = `                                
+        const f2048 = `                                                                                                                                                      
 ___ ___ ___ ___    _____ _____ ____  _____ 
 |_  |   | | | . |  |   | |     |    \|   __|
 |  _| | |_  | . |  | | | |  |  |  |  |   __|
@@ -114,7 +114,7 @@ ___ ___ ___ ___    _____ _____ ____  _____
     }
 
     drawTip() {
-        const tip = `W => ↑\nA => ←\nS => ↓\nD => →\nPlease enter key move\n`;
+        const tip = `W or ↑ => Up\nA or ← => Left\nS or ↓ => Down\nD or → => Right\nPlease enter key.\n`;
         console.log(tip)
     }
 
