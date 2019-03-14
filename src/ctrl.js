@@ -180,7 +180,7 @@ ___ ___ ___ ___    _____ _____ ____  _____
     }
 
     gameover() {
-        const str = `Have a good time ^.^\n`;
+        const str = `Have a good time!\n`;
         console.log(chalk.cyan(str));
         process.exit(0);
     }
