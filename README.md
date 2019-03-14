@@ -11,13 +11,13 @@
     <img align="center" alt="2048 in action!" src="assets/demo.gif"></img>
 </p>
 
-# 安装 Install 
+# Install 
 
 `
 npm install -g 2048.node
 `
 
-# 开始 Start
+# Start
 
 `
 2048node
