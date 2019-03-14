@@ -14,6 +14,6 @@
 # TODO
 
 - [x] Play game
-- [ ] Number color
+- [x] Number color
 - [ ] Save score
 - [ ] Game rank
