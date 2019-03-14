@@ -159,7 +159,6 @@ ___ ___ ___ ___    _____ _____ ____  _____
             this.generateRandom();
             this.hasChange = false;
         }
-
         this.drawLogo();
         this.drawBoard();
         this.drawGrid();
