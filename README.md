@@ -8,7 +8,7 @@
 > 🎮 Terminal version of the game "2048" written in Nodejs
 
 <p align="center">
-    <img align="center" alt="2048 in action!" src="assets/demo.gif"></img>
+    <img align="center" alt="2048 in action!" src="demo.gif"></img>
 </p>
 
 # Install 
