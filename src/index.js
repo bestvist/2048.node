@@ -31,7 +31,7 @@ rl.input.on('data', (chunk) => {
 })
 
 rl.on('close', () => {
-    game.gameover();
+    game.stop();
 })
 
 game.start();

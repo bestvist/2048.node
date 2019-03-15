@@ -13,7 +13,7 @@ class Grid {
         for (var x = 0; x < this.size; x++) {
             var row = cells[x] = [];
             for (var y = 0; y < this.size; y++) {
-                row.push("");
+                row.push(0);
             }
         }
         return cells;
@@ -24,6 +24,7 @@ class Grid {
         const size = this.size;
         for (let x = 0; x < size; x++) {
             for (let y = 0; y < size; y++) {
+                cells[x][y] = cells[x][y] ? cells[x][y] : '';
                 cells[x][y] = this.trimCell(cells[x][y]) + this.colorCell(cells[x][y]);
             }
         }

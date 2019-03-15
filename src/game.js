@@ -158,6 +158,7 @@ ___ ___ ___ ___    _____ _____ ____  _____
         if (this.hasChange) {
             this.generateRandom();
             this.hasChange = false;
+            if (this.checkOver()) this.lose();
         }
         this.drawLogo();
         this.drawBoard();
@@ -169,19 +170,41 @@ ___ ___ ___ ___    _____ _____ ____  _____
         this.score += score;
         if (score === 2048) {
             this.won();
-            this.gameover();
         }
+    }
+
+    checkOver() {
+        const cells = this.grid.cells;
+        const size = this.grid.size;
+        for (let x = 0; x < size; x++) {
+            for (let y = 0; y < size; y++) {
+                if (cells[x][y] === "") {
+                    return false;
+                } else if (cells[x][y - 1] && cells[x][y - 1] === cells[x][y]) {
+                    return false;
+                } else if (cells[x - 1][y] && cells[x - 1][y] === cells[x][y]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     won() {
         const str = `CONGRATULATION! YOU WIN!\n`;
         console.log(chalk.yellow(str));
+        this.stop();
     }
 
-    gameover() {
+    lose() {
+        const str = `GAME OVER!\n`;
+        console.log(chalk.green(str));
+        this.stop();
+    }
+
+    stop() {
         const str = `Have a good time!\n`;
         console.log(chalk.cyan(str));
-        process.exit(0);
     }
 
 }
