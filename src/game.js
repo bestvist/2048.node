@@ -6,6 +6,7 @@ class Game {
     constructor() {
         this.score = 0;
         this.hasChange = false;
+        this.isWon = false;
     }
 
     start() {
@@ -135,17 +136,17 @@ ___ ___ ___ ___    _____ _____ ____  _____
         let next;
         for (let i = 0; i < arr.length; i++) {
             next = arr.findIndex((c, m) => {
-                return m > i && c !== "";
+                return m > i && c !== 0;
             })
             if (next !== -1) {
-                if (arr[i] === "") {
+                if (arr[i] === 0) {
                     arr[i] = arr[next];
-                    arr[next] = "";
+                    arr[next] = 0;
                     i -= 1;
                     this.hasChange = true;
                 } else if (arr[i] === arr[next]) {
                     arr[i] = arr[i] * 2;
-                    arr[next] = "";
+                    arr[next] = 0;
                     this.setScore(arr[i]);
                     this.hasChange = true;
                 }
@@ -155,34 +156,37 @@ ___ ___ ___ ___    _____ _____ ____  _____
     }
 
     action() {
-        if (this.hasChange) {
-            this.generateRandom();
-            this.hasChange = false;
-            if (this.checkOver()) this.lose();
-        }
+        if (this.hasChange) this.generateRandom();
+
         this.drawLogo();
         this.drawBoard();
         this.drawGrid();
         this.drawTip();
+
+        if (this.hasChange) {
+            this.hasChange = false;
+            if (this.isWon) this.won();
+            if (this.checkLose()) this.lose();
+        }
     }
 
     setScore(score) {
         this.score += score;
         if (score === 2048) {
-            this.won();
+            this.isWon = true;
         }
     }
 
-    checkOver() {
+    checkLose() {
         const cells = this.grid.cells;
         const size = this.grid.size;
         for (let x = 0; x < size; x++) {
             for (let y = 0; y < size; y++) {
-                if (cells[x][y] === "") {
+                if (cells[x][y] === 0) {
                     return false;
                 } else if (cells[x][y - 1] && cells[x][y - 1] === cells[x][y]) {
                     return false;
-                } else if (cells[x - 1][y] && cells[x - 1][y] === cells[x][y]) {
+                } else if (cells[x - 1] && cells[x - 1][y] === cells[x][y]) {
                     return false;
                 }
             }
@@ -203,8 +207,7 @@ ___ ___ ___ ___    _____ _____ ____  _____
     }
 
     stop() {
-        const str = `Have a good time!\n`;
-        console.log(chalk.cyan(str));
+        process.exit(0);
     }
 
 }

@@ -31,6 +31,7 @@ rl.input.on('data', (chunk) => {
 })
 
 rl.on('close', () => {
+    console.log(`Have a good time!\n`);
     game.stop();
 })
 
