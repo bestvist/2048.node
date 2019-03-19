@@ -64,7 +64,7 @@ class Grid {
             '128': '#e91e63',
             '256': '#9c27b0',
             '512': '#3f51b5',
-            '1028': '#fbd324',
+            '1024': '#fbd324',
             '2048': '#00bcd4',
         }
         return chalk.hex([colorMap[value]])(value);
