@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 
 const readline = require('readline');
+const interface = {
+    input: process.stdin,
+    output: process.stdout
+}
+
 const Game = require('./game')
-const game = new Game();
+const game = new Game(interface);
 
 const keyMap = {
     '77': 'up',
@@ -15,24 +20,25 @@ const keyMap = {
     '1b5b43': 'right',
 }
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})
+const rl = readline.createInterface(interface)
 
 rl.prompt();
 
 rl.input.on('data', (chunk) => {
     const direction = keyMap[chunk.toString('hex')];
     if (direction) {
-        process.stdout.write('\u001B[2J\u001B[0;0f');
+        interface.output.write('\u001B[2J\u001B[0;0f');
         game.move(direction);
     }
 })
 
 rl.on('close', () => {
-    console.log(`Have a good time!\n`);
+    interface.output.write(`Have a good time!\n`);
     game.stop();
+})
+
+game.on('stop', () => {
+    rl.close()
 })
 
 game.start();
