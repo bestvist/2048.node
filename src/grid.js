@@ -2,10 +2,11 @@ const Table = require('cli-table')
 const chalk = require('chalk');
 
 class Grid {
-    constructor() {
+    constructor(intrfce) {
         this.size = 4;
         this.cellWidth = 10;
         this.cells = this.initGrid();
+        this.interface = intrfce;
     }
 
     initGrid() {
@@ -49,7 +50,7 @@ class Grid {
             colWidths: [this.cellWidth, this.cellWidth, this.cellWidth, this.cellWidth]
         });
         table.push(...cells);
-        console.log(table.toString());
+        this.interface.output.write(table.toString()+'\n');
     }
 
     colorCell(value) {
